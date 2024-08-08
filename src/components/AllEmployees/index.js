@@ -11,6 +11,7 @@ const AllEmp = () => {
     const [searchTerm, setSearchTerm] = useState('');
     
     const [term, setTerm] = useState('');
+    const [error, setError] = useState('');
     const [Edit, setEdit] = useState(false);
 
     const caseChange=(data)=>{
