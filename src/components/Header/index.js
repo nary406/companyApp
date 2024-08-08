@@ -27,7 +27,7 @@ const Header = props => {
 
 
   return (
-    <div className="main-header-container" style={{display:"flex", flexDirection:"row"}}>
+    <div className="main-header-container" style={{display:"flex", flexDirection:"row", color:"black"}}>
       <Link to="/">
        <h1>DashBoard</h1>
       </Link>
