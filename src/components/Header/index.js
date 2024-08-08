@@ -27,7 +27,7 @@ const Header = props => {
 
 
   return (
-    <nav className="main-header-container">
+    <div className="main-header-container">
       <Link to="/">
        <h1>DashBoard</h1>
       </Link>
@@ -90,7 +90,7 @@ const Header = props => {
           </button>
         </li>
       </ul>
-    </nav>
+    </div>
   )
 }
 
