@@ -27,26 +27,26 @@ const Header = props => {
 
 
   return (
-    <div className="main-header-container" style={{display:"flex", flexDirection:"row", color:"black"}}>
+    <div className="main-header-container" style={{display:"flex", flexDirection:"row", color:"black", justifyContent:"Space-between", alignItems:"center"}}>
       <Link to="/">
        <h1>DashBoard</h1>
       </Link>
       <div className="lg-container">
         <ul className="lg-list">
-          <li className="header-item">
+          <li className="header-item" style={{color:"black"}}>
             <Link to="/" className="link">
               Home
             </Link>
           </li>
 
-          <li className="header-item">
+          <li className="header-item" style={{color:"black"}}>
             <Link to="/newemployee" className="link">
               Create Employee
             </Link>
           </li>
 
 
-          <li className="header-item">
+          <li className="header-item" style={{color:"black"}}>
             <Link to="/employeelist" className="link">
               Employeelist
             </Link>
