@@ -17,6 +17,8 @@ const NewEmp = () => {
     image: null
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [upload, setUpload] = useState("Upload");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false); // State to manage loading
@@ -33,14 +35,17 @@ const NewEmp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // Set isSubmitting to true before submitting
+  
     const todaysDate = new Date().toLocaleDateString();
     const newForm = { ...formData, date: todaysDate };
-
+  
     if (upload === "Upload") {
       alert("Please upload an image.");
+      setIsSubmitting(false); // Set isSubmitting to false after submitting
       return;
     }
-
+  
     const options = {
       method: "POST",
       headers: {
@@ -48,7 +53,7 @@ const NewEmp = () => {
       },
       body: JSON.stringify(newForm)
     };
-
+  
     const myResponse = await fetch("https://employeedetails-4ur0.onrender.com/newemp", options);
     const myDetails = await myResponse.json();
     if (myResponse.ok) {
@@ -56,6 +61,8 @@ const NewEmp = () => {
     } else {
       setError(myDetails.message);
     }
+  
+    setIsSubmitting(false); // Set isSubmitting to false after submitting
   };
 
   const uploadImage = async () => {
@@ -247,7 +254,13 @@ const NewEmp = () => {
   </button>
 </div>
             <p className="error">{error}</p>
-            <button type="submit" className="button">Submit</button>
+            <button type="submit" className="button" style={{display:"flex", justifyContent:"center", alignItems:"center"}} >
+    {isSubmitting ? (
+      <ThreeDots height="20" width="30" color="#fff" />
+    ) : (
+      'Submit'
+    )}
+  </button>
           </form>
         </div>
       </div>
