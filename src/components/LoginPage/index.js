@@ -2,6 +2,7 @@
 import "./index.css"
 import Cookies from "js-cookie"
 import React, { useState } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 import { useNavigate, Navigate, } from "react-router-dom";
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showerror, setshowError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let history=useNavigate()
 
@@ -25,31 +27,31 @@ const Login = () => {
 
 
   const onSubmitForm = async event => {
-    localStorage.setItem("name",name)
-    event.preventDefault()
-    
-    const userDetails = {name, password}
-    const apiUrl = "https://employeedetails-4ur0.onrender.com/login"
+    event.preventDefault();
+    setIsLoading(true); // Set isLoading to true before submitting
+
+    const userDetails = { name, password };
+    const apiUrl = "https://employeedetails-4ur0.onrender.com/login";
     const options = {
       method: 'POST',
-      headers:{
-        "Content-Type":"application/json"
+      headers: {
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(userDetails),
     }
-    
-    const response = await fetch(apiUrl, options)
-    const data = await response.json()
- 
+
+    const response = await fetch(apiUrl, options);
+    const data = await response.json();
+
     if (response.ok === true) {
-    success(data.jwtToken)
+      success(data.jwtToken);
     } else {
-        setshowError(true)
-        setError(data.error)
-     
-     console.log(data.error)
-    
+      setshowError(true);
+      setError(data.error);
+      console.log(data.error);
     }
+
+    setIsLoading(false); // Set isLoading to false after submitting
   }
   
 const jwtToken=Cookies.get("jwtToken")
@@ -63,7 +65,7 @@ return <Navigate to ="/" />
       <div className="form_card">
       <img src="https://res.cloudinary.com/dky72aehn/image/upload/v1725300268/16390_uhdvpa.jpg" alt="Login Illustration" />
         <form onSubmit={onSubmitForm} className="form_div">
-          <h2 className="title">Login</h2>
+          <h1 className="title">Login</h1>
           <div className="group">
             <span className="icon">
               <svg
@@ -116,7 +118,11 @@ return <Navigate to ="/" />
   
           {showerror && <p style={{ color: "red" }}>*{error}</p>}
           <button type="button" onClick={onSubmitForm} className="button">
-            Login
+            {isLoading ? (
+              <ThreeDots height="20" width="20" color="#fff" />
+            ) : (
+              'Login'
+            )}
           </button>
         </form>
        
