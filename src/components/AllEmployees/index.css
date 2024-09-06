@@ -1,0 +1,160 @@
+/* Container for the table */
+.table-container {
+    width: 100%;
+    max-width: 1200px; /* Maximum width for larger screens */
+    margin: 0 auto; /* Center the container */
+   
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* Search input styles */
+/* From Uiverse.io by LightAndy1 */ 
+.groupsearch {
+    display: flex;
+    line-height: 28px;
+    margin:20px;
+    align-items: center;
+    position: relative;
+    max-width: 290px;
+  }
+  
+  .inputsearch {
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+  
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #89898932;
+    color: #0d0c22;
+    transition: 0.3s ease;
+  }
+  
+  .inputsearch::placeholder {
+    color: #76767e;
+  }
+  
+  .inputsearch:focus,
+  inputsearch:hover {
+    outline: none;
+    border-color: rgba(0, 16, 247, 0.302);
+    background-color: #afcbe4a2;
+    box-shadow: 0 0 0 4px rgb(247 127 0 / 10%);
+  }
+  
+  .iconsearch {
+    position: absolute;
+    left: 1rem;
+    fill: #555564;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+
+/* Table styles */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Header styles */
+.responsive-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Row hover effect */
+.responsive-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Profile image styles */
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Button styles */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Delete button styles */
+.delete-button {
+    margin-left: 20px;
+    background-color: #dc3545; /* Bootstrap danger color */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red for hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .responsive-table {
+       /* Make table block for smaller screens */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .responsive-table th,
+    .responsive-table td {
+        display: block; /* Make each cell block for stacking */
+        text-align: right; /* Align text to the right */
+    }
+
+    .responsive-table th {
+        position: absolute; /* Position headers for stacking */
+        top: -9999px; /* Hide off-screen */
+        left: -9999px; /* Hide off-screen */
+    }
+
+    .responsive-table tr {
+        margin-bottom: 15px; /* Add spacing between rows */
+        border: 1px solid #ddd; /* Add border for clarity */
+    }
+
+    .responsive-table td {
+        text-align: left; /* Align text to the left */
+        padding-left: 50%; /* Add padding for better readability */
+        position: relative; /* Position relative for pseudo-elements */
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label); /* Use data-label for responsive labels */
+        position: absolute;
+        left: 10px; /* Position label */
+        font-weight: bold; /* Make label bold */
+    }
+
+    .table-container{
+        width:100%;
+        padding: 0px;
+    }
+    .table_row{
+        margin-bottom: 500px;
+    }
+}
