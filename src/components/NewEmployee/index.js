@@ -2,6 +2,8 @@ import Header from "../Header";
 import React, { useState } from 'react';
 import './index.css'; // Import the CSS file
 import { v4 as uuid } from "uuid";
+import { FaUserPlus } from 'react-icons/fa'; 
+import { ThreeDots } from 'react-loader-spinner'; // Import the loader
 
 const NewEmp = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,7 @@ const NewEmp = () => {
 
   const [upload, setUpload] = useState("Upload");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // State to manage loading
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -57,6 +60,7 @@ const NewEmp = () => {
 
   const uploadImage = async () => {
     if (formData.image && formData.image instanceof File) {
+      setIsLoading(true); // Start loading
       const data = new FormData();
       data.append("file", formData.image);
       data.append("upload_preset", "nary_store");
@@ -76,6 +80,7 @@ const NewEmp = () => {
       }));
 
       setUpload("Uploaded");
+      setIsLoading(false); // Stop loading
     } else {
       console.log("No image to upload or image already uploaded.");
     }
@@ -91,8 +96,11 @@ const NewEmp = () => {
     <div>
       <Header />
       <div className="form-container">
-        <h1>New Employee</h1>
         <div className="card">
+         <div style={{display:"flex", flexDirection:"row", justifyContent:"flex-start", alignItems:"center"}}>
+         <FaUserPlus style={{marginRight:"10px", fontSize:"35px"}}/>
+         <h1>New Employee</h1>
+         </div>
           <form onSubmit={handleSubmit}>
             <div className="formGroup">
               <label>
@@ -148,12 +156,14 @@ const NewEmp = () => {
                 </select>
               </label>
             </div>
-            <div className="formGroup">
-              <label>
+            <div className="formGroupradio">
+              <h3 style={{marginLeft:"0px", margin:"5px"}}>
                 Gender
-              </label>
-              <label>
+              </h3>
+             <div style={{marginTop:"10px"}}>
+             <label>
                 <input
+                id="gender"
                   type="radio"
                   name="gender"
                   value="male"
@@ -174,12 +184,14 @@ const NewEmp = () => {
                 />
                 Female
               </label>
+             </div>
             </div>
-            <div className="formGroup">
-              <label>
+            <div className="formGroupradio"  style={{marginTop:"0px", marginBottom:"5px"}}>
+              <h3  style={{marginTop:"10px", marginBottom:"5px"}}>
                 Degree
-              </label>
-              <label>
+              </h3>
+             <div style={{ marginBottom:"10px"}}> 
+             <label>
                 <input
                   type="radio"
                   name="degree"
@@ -212,19 +224,28 @@ const NewEmp = () => {
                 />
                 BSC
               </label>
+             </div>
             </div>
-            <div className="formGroup">
-              <label>
-                Upload Image
-                <input
-                  type="file"
-                  name="image"
-                  onChange={handleChange}
-                  className="fileInput"
-                />
-              </label>
-              <button type="button" onClick={uploadImage} className="uploadButton">{upload}</button>
-            </div>
+            <div className="formGroupfile">
+  <label htmlFor="image-upload" className="upload-label">
+    <span className="upload-text">Upload Image</span>
+    <span className="upload-icon">+</span>
+  </label>
+  <input
+    type="file"
+    id="image-upload"
+    name="image"
+    onChange={handleChange}
+    className="fileInput"
+  />
+  <button type="button" onClick={uploadImage} className="uploadButton">
+    {isLoading ? (
+      <ThreeDots height="20" width="20" color="#fff" />
+    ) : (
+      upload
+    )}
+  </button>
+</div>
             <p className="error">{error}</p>
             <button type="submit" className="button">Submit</button>
           </form>
