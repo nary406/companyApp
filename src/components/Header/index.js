@@ -1,97 +1,93 @@
-import {Link, useNavigate} from 'react-router-dom'
-import {useState} from "react"
-import { CgProfile } from "react-icons/cg";
-import Cookies from 'js-cookie'
+import { Link, useNavigate } from 'react-router-dom';
+import { FaHome, FaUserPlus, FaUserFriends, FaUserCircle, FaSignOutAlt, FaBars } from 'react-icons/fa';
+import { useState } from "react";
+import Cookies from 'js-cookie';
+import './index.css';
 
-import {MdHome, MdWork} from 'react-icons/md'
+const Header = () => {
+    const person = localStorage.getItem("name");
+    const navigate = useNavigate();
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // State for mobile menu
 
-import {FiLogOut} from 'react-icons/fi'
+    const removeAccess = () => {
+        Cookies.remove('jwtToken');
+        console.log("removed");
+        navigate('/login');
+    }
 
-import './index.css'
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu state
+    }
 
-const Header = props => {
-   
-
-    const person=localStorage.getItem("name")
-    
-
-    const navigate = useNavigate()
-
-  const removeAccess = () => {
-    Cookies.remove('jwtToken')
-    
-   console.log("removed")
-    navigate('/login')
-  }
-
-
-
-  return (
-    <div className="main-header-container" style={{display:"flex", flexDirection:"row", color:"black", justifyContent:"Space-between", alignItems:"center"}}>
-      <Link to="/">
-       <h1>DashBoard</h1>
-      </Link>
-      <div className="lg-container">
-        <ul className="lg-list">
-          <li className="header-item" style={{color:"black"}}>
-            <Link to="/" className="link">
-              Home
+    return (
+        <div className="main-header-container">
+            <Link to="/" className="logo">
+                <FaUserCircle className="logo-icon" />
+                <h3>DashBoard</h3>
             </Link>
-          </li>
-
-          <li className="header-item" style={{color:"black"}}>
-            <Link to="/newemployee" className="link">
-              Create Employee
-            </Link>
-          </li>
-
-
-          <li className="header-item" style={{color:"black"}}>
-            <Link to="/employeelist" className="link">
-              Employeelist
-            </Link>
-          </li>
-        </ul>
-       
-       <div  style={{color:"white", display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center", width:"40%"}}>
-      <div  style={{color:"white", display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
-        <CgProfile style={{fontSize:"30px"}}/>
-      <h3 style={{color:"white", marginTop:"0px", marginBottom:"5px"}}>{person}</h3>
-      </div>
-       <button
-          type="submit"
-          className="header-logout-button"
-          onClick={removeAccess}
-        >
-          Logout
-        </button>
-       </div>
-      </div>
-      <ul className="sm-container">
-        <li className="sm-list-item">
-          <Link to="/" className="l">
-            <MdHome className="icons" />
-          </Link>
-        </li>
-        <li className="sm-list-item">
-          <Link to="/jobs" className="l">
-            <MdWork className="icons" />
-          </Link>
-        </li>
-        <li className="sm-list-item">
-          <button
-            type="button"
-            data-testid="logout"
-            alt="logout"
-            className="button-icon"
-            onClick={removeAccess}
-          >
-            <FiLogOut className="icons" />
-          </button>
-        </li>
-      </ul>
-    </div>
-  )
+            <div className="lg-container">
+                <ul className="lg-list">
+                    <li className="header-item">
+                        <Link to="/" className="link">
+                            <FaHome className="link-icon" />
+                            Home
+                        </Link>
+                    </li>
+                    <li className="header-item">
+                        <Link to="/newemployee" className="link">
+                            <FaUserPlus className="link-icon" />
+                            Create Employee
+                        </Link>
+                    </li>
+                    <li className="header-item">
+                        <Link to="/employeelist" className="link">
+                            <FaUserFriends className="link-icon" />
+                            Employee List
+                        </Link>
+                    </li>
+                </ul>
+                <div className="user-info">
+                    <FaUserCircle className="profile-icon" />
+                    <h3>{person}</h3>
+                    <button className="header-logout-button" onClick={removeAccess}>
+                        <FaSignOutAlt className="logout-icon" />
+                        Logout
+                    </button>
+                </div>
+            </div>
+            <div className="hamburger-icon" onClick={toggleMobileMenu}>
+                <FaBars className="hamburger" />
+            </div>
+            {isMobileMenuOpen && (
+                <ul className="sm-container">
+                    <li className="sm-list-item">
+                    <Link to="/" className="link">
+                            <FaHome className="link-icon" />
+                            Home
+                        </Link>
+                    </li>
+                    <li className="sm-list-item">
+                    <Link to="/newemployee" className="link">
+                            <FaUserPlus className="link-icon" />
+                            Create Employee
+                        </Link>
+                    </li>
+                    <li className="sm-list-item">
+                    <Link to="/employeelist" className="link">
+                            <FaUserFriends className="link-icon" />
+                            Employee List
+                        </Link>
+                    </li>
+                    <li className="sm-list-item" >
+                    <button className="header-logout-button" onClick={removeAccess}>
+                        <FaSignOutAlt className="logout-icon" />
+                        Logout
+                    </button>
+                    </li>
+                </ul>
+            )}
+        </div>
+    );
 }
 
-export default Header
+export default Header;

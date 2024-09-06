@@ -1,40 +1,69 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
 .card {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .formGroup {
-    margin-bottom: 15px;
-  }
-  
-  .input,
-  .select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    color:black;
-    box-sizing: border-box;
-  }
-  
-  .radio,
-  .checkbox {
-    margin-right: 10px;
-  }
-  
-  .fileInput {
-    margin-top: 5px;
-  }
-  
-  .button {
-    padding: 10px 15px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.radio {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.fileInput {
+  margin-top: 5px;
+}
+
+.uploadButton {
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}

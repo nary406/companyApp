@@ -58,34 +58,73 @@ const jwtToken=Cookies.get("jwtToken")
  if(jwtToken!==undefined){
 return <Navigate to ="/" />
  }else{
-  return <div  className="container"> 
-  <form  onSubmit={onSubmitForm} className="form_div">
-  <h2 className="title">Login</h2>
-    <label className="label">
-      Username: </label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setUsername(e.target.value)}
-        className="input"
-      />
-      
-   
-    <label  className="label">
-      Password: </label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="input"
-      /><br/>
-  {showerror&& <p style={{color:"red"}}>*{error}</p>}
-    <button type="button" onClick={onSubmitForm}  className="button">
-      Login
-    </button>
-   
-  </form>
-</div>
+   return (
+    <div className="container">
+      <div className="form_card">
+      <img src="https://res.cloudinary.com/dky72aehn/image/upload/v1725300268/16390_uhdvpa.jpg" alt="Login Illustration" />
+        <form onSubmit={onSubmitForm} className="form_div">
+          <h2 className="title">Login</h2>
+          <div className="group">
+            <span className="icon">
+              <svg
+                className="w-6 h-6 text-gray-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                ></path>
+              </svg>
+            </span>
+            <input
+              className="input"
+              type="text"
+              placeholder="Username"
+              value={name}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+  
+          <div className="group">
+            <svg
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon"
+            >
+              <path
+                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              ></path>
+            </svg>
+            <input
+              className="input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+  
+          {showerror && <p style={{ color: "red" }}>*{error}</p>}
+          <button type="button" onClick={onSubmitForm} className="button">
+            Login
+          </button>
+        </form>
+       
+      </div>
+     
+    </div>
+  );
+  
  }
 };
 

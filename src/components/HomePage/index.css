@@ -1,0 +1,174 @@
+.dashboard-container {
+    min-height: 100vh;
+   
+    background-color: #f4f4f9;
+    padding-top: 90px;
+}
+
+.wid_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+
+}
+
+
+.dashboard-header {
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    
+    text-align: center;
+}
+
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  
+    max-width: 1200px;
+    padding-top: 20px;
+    width:50%;
+}
+
+.widget-icon {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.dashboard-widget {
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+    text-align: center;
+}
+
+.dashboard-widget:hover {
+    transform: translateY(-5px);
+}
+
+.widget-total-employees {
+    background-color: #3498db;
+}
+
+.widget-departments {
+    background-color: #e74c3c;
+}
+
+.widget-recent-hires {
+    background-color: #f39c12;
+}
+
+.dashboard-widget h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.dashboard-widget p,
+.dashboard-widget ul {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.dashboard-widget ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dashboard-widget li {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.company-image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+}
+
+.company-image {
+    min-width: 10%;
+    margin-right: 20px;
+    max-width: 700px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        font-size: 2em;
+    }
+    .dashboard-container{
+        padding-top: 20px;
+    }
+
+    .widget-icon {
+        font-size: 1.8em;
+    }
+
+    .dashboard-widget {
+        padding: 15px;
+    }
+
+    .wid_div{
+        flex-direction: column;
+        padding-top: 0px;
+    }
+
+    .dashboard-widgets{
+        width:80%;
+     margin: auto;
+    }
+
+    .dashboard-widget h2 {
+        font-size: 1.3em;
+    }
+
+    .dashboard-widget p,
+    .dashboard-widget ul {
+        font-size: 1em;
+    }
+    .company-image{
+        width:80%;
+        
+        margin: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header {
+        font-size: 1.8em;
+    }
+   
+    .widget-icon {
+        font-size: 1.5em;
+    }
+
+    .dashboard-widget {
+        padding: 10px;
+    }
+
+    .dashboard-widget h2 {
+        font-size: 1.2em;
+    }
+
+    .dashboard-widget p,
+    .dashboard-widget ul {
+        font-size: 0.9em;
+    }
+}
+
+.company-description{
+    text-align: center;
+    margin-top: 50px;;
+}
