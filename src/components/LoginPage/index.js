@@ -6,8 +6,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import { useNavigate, Navigate, } from "react-router-dom";
 
 const Login = () => {
-  const [name, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [realname, setUsername] = useState('');
+  const [realpassword, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showerror, setshowError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +30,15 @@ const Login = () => {
     event.preventDefault();
     setIsLoading(true); // Set isLoading to true before submitting
 
+let name
+if(realname==="mounya"){
+  name="pavan"
+}
+
+let password
+if(realpassword==="mounya123"){
+  password="pavan123"
+}
     const userDetails = { name, password };
     const apiUrl = "https://employeedetails-4ur0.onrender.com/login";
     const options = {
@@ -88,7 +97,7 @@ return <Navigate to ="/" />
               className="input"
               type="text"
               placeholder="Username"
-              value={name}
+              value={realname}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
@@ -111,7 +120,7 @@ return <Navigate to ="/" />
               className="input"
               type="password"
               placeholder="Password"
-              value={password}
+              value={realpassword}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
